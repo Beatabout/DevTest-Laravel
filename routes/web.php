@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AskController;
-use App\Http\Controllers\homeController;
+use App\Http\Controllers\StreamingChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [homeController::class, 'requestOpenAi'])->name('whatisphp');
+Route::get('/streaming-chat', StreamingChatController::class)->name('streaming-chat');
 
 Route::get("/ask", AskController::class);
 
