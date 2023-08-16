@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AskController;
+use App\Http\Controllers\SalvadorController;
 use App\Http\Controllers\StreamingChatController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/streaming-chat', StreamingChatController::class)->name('streaming-chat');
 
 Route::get("/ask", AskController::class);
+
+Route::get("/salvador", SalvadorController::class)->name("salvador");
+Route::post("/salvador", SalvadorController::class)->name("salvador");
 
 Route::get('/', function () {
     return view('welcome');
