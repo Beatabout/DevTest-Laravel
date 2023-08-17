@@ -3,6 +3,7 @@
 ## About Project
 
 Laravel project for testing
+## ___ 
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
   <img width="12" />
@@ -38,8 +39,3 @@ Laravel project for testing
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
 </div>
-
-  <img height="200" src="https://i.imgflip.com/65efzo.gif"  />
-</div>
-
-###
