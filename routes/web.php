@@ -23,6 +23,10 @@ Route::get("/ask", AskController::class);
 Route::get("/salvador", SalvadorController::class)->name("salvador");
 Route::post("/salvador", SalvadorController::class)->name("salvador");
 
+Route::get("/vue-test", function () {
+    return view("vue-test");
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
