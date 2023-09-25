@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Виділення синтаксису</title>
+  <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 </head>
 <body>
   <header>
@@ -37,6 +38,11 @@
                   <span aria-hidden="true"> → </span>
                 </button>
               </form>
+              <audio id="notificationSound">
+                <source src="{{ asset('sounds/notification.wav') }}" type="audio/mpeg">
+                Ваш браузер не підтримує аудіо-елемент.
+              </audio>
+              <div id="event-box"></div>
             </div>
           </div>
         </div>
@@ -55,6 +61,28 @@
       margin: 10px 0;
     }
   </style>
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+    let counter = 0;
+    const notificationSound = document.getElementById('notificationSound');
+
+    // Функція для програвання звуку сповіщення
+    function playNotificationSound() {
+      notificationSound.play();
+    }
+    var pusher = new Pusher('1277e0e169392bd06973', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('TestApp');
+    channel.bind('test-event', function(data) {
+      playNotificationSound();
+      counter++;
+      document.getElementById('event-box').textContent = counter + JSON.stringify(data);
+      // alert(JSON.stringify(data));
+    });
+  </script>
   <script>
     const chatBox = document.getElementById("chat-box");
     const form = document.querySelector("form");

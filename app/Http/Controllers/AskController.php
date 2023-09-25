@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\MyEvent;
 use OpenAI\Laravel\Facades\OpenAI;
 
 class AskController extends Controller
@@ -10,16 +11,19 @@ class AskController extends Controller
     public function __invoke(Request $request)
     {
         $question = $request->query('question');
+        
+        event(new MyEvent('Hello World!'));
+
         return response()->stream(function () use ($question) {
             $stream = OpenAI::chat()->createStreamed([
-                'model' => 'gpt-3.5-turbo-16k',
+                'model' => 'gpt-3.5-turbo',
                 'messages' => [
                     
-                    ['role' => 'system', 'content' => 'Завжди відповідай Українською! Наче ти веб розробник.'],
+                    ['role' => 'system', 'content' => 'Ти віртуальний лікар! Якщо питання не стосується медицини, відповідай - "Я не знаю.".'],
                     ['role' => 'user', 'content' => $question]
                 ],
-                'temperature' => 0,
-                'max_tokens' => 16000
+                'temperature' => 1,
+                'max_tokens' => 1000
             ]);
 
             foreach ($stream as $response) {
