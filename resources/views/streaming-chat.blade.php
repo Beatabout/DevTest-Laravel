@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Виділення синтаксису</title>
-  <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-</head>
-<body>
+@extends('app')
+
+@section('content')
   <header>
     <nav>
       <ul>
@@ -79,7 +75,7 @@
     channel.bind('test-event', function(data) {
       playNotificationSound();
       counter++;
-      document.getElementById('event-box').textContent = counter + JSON.stringify(data);
+      document.getElementById('event-box').textContent = counter + ': ' + data.message;
       // alert(JSON.stringify(data));
     });
   </script>
@@ -111,6 +107,5 @@
     });
   </script>
   
-</body>
-</html>
+@endsection
   

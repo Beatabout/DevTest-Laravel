@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Виділення синтаксису</title>
-</head>
-<body>
+@extends('app')
+
+@section('content')
   <header>
     <nav>
       <ul>
@@ -51,6 +48,5 @@
       margin: 10px 0;
     }
   </style>
-</body>
-</html>
+@endsection
   
